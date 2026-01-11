@@ -161,39 +161,51 @@ const Register = () => {
 
                     <div>
                         <label className="block text-gray-400 mb-2">Session</label>
-                        <div className="grid grid-cols-3 gap-4">
-                            {sessions.map((s) => (
-                                <button
-                                    key={s}
-                                    type="button"
-                                    onClick={() => setFormData({ ...formData, session: s })}
-                                    className={`border rounded-lg p-3 text-center transition-all duration-200 ${formData.session === s
-                                            ? 'bg-neon-green text-dark-bg font-bold border-neon-green shadow-[0_0_15px_rgba(57,255,20,0.4)]'
-                                            : 'border-gray-700 hover:border-gray-500 text-gray-400 hover:text-white'
-                                        }`}
-                                >
-                                    {s}
-                                </button>
-                            ))}
+                        <div className="relative">
+                            <select
+                                name="session"
+                                value={formData.session}
+                                onChange={handleChange}
+                                required
+                                className="w-full bg-dark-bg/50 border border-gray-700 rounded-lg p-3 text-white focus:border-neon-green focus:outline-none transition-colors appearance-none cursor-pointer"
+                            >
+                                <option value="" disabled className="text-gray-500">Select Session</option>
+                                {sessions.map((s) => (
+                                    <option key={s} value={s} className="bg-gray-800 text-white">
+                                        {s}
+                                    </option>
+                                ))}
+                            </select>
+                            <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
                         </div>
                     </div>
 
                     <div>
                         <label className="block text-gray-400 mb-2">T-shirt Size</label>
-                        <div className="flex flex-wrap gap-4">
-                            {sizes.map((s) => (
-                                <button
-                                    key={s}
-                                    type="button"
-                                    onClick={() => setFormData({ ...formData, tshirtSize: s })}
-                                    className={`border rounded-lg w-12 h-12 flex items-center justify-center transition-all duration-200 ${formData.tshirtSize === s
-                                            ? 'bg-neon-green text-dark-bg font-bold border-neon-green shadow-[0_0_15px_rgba(57,255,20,0.4)]'
-                                            : 'border-gray-700 hover:border-gray-500 text-gray-400 hover:text-white'
-                                        }`}
-                                >
-                                    {s}
-                                </button>
-                            ))}
+                        <div className="relative">
+                            <select
+                                name="tshirtSize"
+                                value={formData.tshirtSize}
+                                onChange={handleChange}
+                                required
+                                className="w-full bg-dark-bg/50 border border-gray-700 rounded-lg p-3 text-white focus:border-neon-green focus:outline-none transition-colors appearance-none cursor-pointer"
+                            >
+                                <option value="" disabled className="text-gray-500">Select Size</option>
+                                {sizes.map((s) => (
+                                    <option key={s} value={s} className="bg-gray-800 text-white">
+                                        {s}
+                                    </option>
+                                ))}
+                            </select>
+                            <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
                         </div>
                     </div>
 
