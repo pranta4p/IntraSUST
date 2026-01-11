@@ -1,12 +1,4 @@
-const path = require('path');
-const dotenv = require('dotenv');
-dotenv.config({ path: path.join(__dirname, '.env') });
-
-console.log('--- Environment Check ---');
-console.log('SHEET_ID:', process.env.GOOGLE_SHEET_ID ? 'Loaded' : 'MISSING');
-console.log('EMAIL:', process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL ? 'Loaded' : 'MISSING');
-console.log('PRIVATE_KEY:', process.env.GOOGLE_PRIVATE_KEY ? 'Loaded' : 'MISSING');
-console.log('-------------------------');
+require('dotenv').config(); // MUST be first
 
 const express = require('express');
 const cors = require('cors');
@@ -23,10 +15,17 @@ app.use(express.json());
 app.use('/api/register', registerRoute);
 
 app.get('/', (req, res) => {
-    res.send('INTRA SUST Contest API is running (Google Sheets Mode)');
+    res.send('INTRA SUST Contest API is running');
 });
 
-// Start Server
+// Debug ENV (remove after testing)
+console.log('--- ENV CHECK ---');
+console.log('SHEET_ID:', !!process.env.GOOGLE_SHEET_ID);
+console.log('EMAIL:', !!process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL);
+console.log('PRIVATE_KEY:', !!process.env.GOOGLE_PRIVATE_KEY);
+console.log('-----------------');
+
+// Start server
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`✅ Server running on port ${PORT}`);
 });

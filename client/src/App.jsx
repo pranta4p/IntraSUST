@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import PrizePool from './pages/PrizePool';
+import Rules from './pages/Rules';
+import Sponsors from './pages/Sponsors';
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/prizepool" element={<PrizePool />} />
+          <Route path="/rules" element={<Rules />} />
+          <Route path="/sponsors" element={<Sponsors />} />
         </Routes>
       </div>
     </Router>
