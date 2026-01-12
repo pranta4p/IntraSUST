@@ -27,7 +27,8 @@ async function getSheet() {
         'Department',
         'Session',
         'Contact Number',
-        'Tshirt Size'
+        'Tshirt Size',
+        'Codeforces Handle' // New Column
     ];
 
     try {
@@ -60,7 +61,8 @@ router.post('/', async (req, res) => {
             department,
             session,
             contactNumber,
-            tshirtSize
+            tshirtSize,
+            cfHandle // New Field
         } = req.body;
 
         if (!name || !registrationNumber || !department || !session || !contactNumber) {
@@ -100,11 +102,12 @@ router.post('/', async (req, res) => {
             department,
             session,
             contactNumber,
-            tshirtSize
+            tshirtSize,
+            cfHandle || '' // Add cfHandle, default to empty string if undefined
         ];
 
-        // Load the exact row range (A..G for that row)
-        const rangeA1 = `A${nextRowIndex}:G${nextRowIndex}`;
+        // Load the exact row range (A..H for that row - 8 columns)
+        const rangeA1 = `A${nextRowIndex}:H${nextRowIndex}`;
         await sheet.loadCells(rangeA1);
 
         // getCell uses zero-based indices

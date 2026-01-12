@@ -7,15 +7,16 @@ import {
     BookOpen,
     Handshake,
     Zap,
+    Terminal,
+    BrainCircuit
 } from "lucide-react";
-import ParticleBackground from "../components/ParticleBackground";
 
 const Home = () => {
     /* ===== Theme ===== */
-    const pageBgColor = "#053c8fff";
-    const buttonBgColor = "#02021bff";
-    const buttonTextColor = "#053c8fff";
-    const borderColor = "#ffffff";
+    const pageBgColor = "#000000"; // Let Canvas handle BG
+    const buttonBgColor = "rgba(6, 182, 212, 0.1)"; // Cyan tint
+    const buttonTextColor = "#22d3ee"; // Cyan-400
+    const borderColor = "#0891b2"; // Cyan-600
 
     /* ===== Button Animation ===== */
     const floatingVariant = (delay) => ({
@@ -32,11 +33,8 @@ const Home = () => {
 
     return (
         <div
-            className="min-h-screen relative overflow-hidden flex flex-col items-center justify-center px-4"
-            style={{ backgroundColor: pageBgColor }}
+            className="min-h-screen relative overflow-hidden flex flex-col items-center justify-center px-4 font-mono"
         >
-            {/* ❄️ Reusable Particle Background */}
-            <ParticleBackground />
 
             <div className="relative z-10 w-full max-w-[1800px] flex flex-col items-center pointer-events-auto">
                 {/* ===== HERO ===== */}
@@ -51,26 +49,30 @@ const Home = () => {
                         whileHover={{ scale: 1.05 }}
                         className="inline-block mb-12"
                     >
-                        <span className="inline-flex items-center gap-4 px-10 py-4 rounded-full bg-white/10 border border-white/40 text-blue-100 font-mono backdrop-blur-md shadow-lg">
-                            <Zap size={40} className="text-yellow-400" />
-                            <span className="text-4xl md:text-xl font-bold tracking-wider">INTRA SUST 2026</span>
+                        <span className="inline-flex items-center gap-4 px-10 py-4 rounded-full bg-cyan-900/20 border border-cyan-500/30 text-cyan-300 font-mono backdrop-blur-sm shadow-[0_0_15px_rgba(34,211,238,0.2)]">
+                            <BrainCircuit size={40} className="text-cyan-400" />
+                            <span className="text-2xl md:text-3xl font-bold tracking-wider">
+                                Intra SUST Programming Contest - 2026
+                            </span>
                         </span>
                     </motion.div>
 
-                    <h1 className="text-6xl md:text-9xl font-black mb-10 tracking-tight">
-                        <span className="block md:inline bg-clip-text text-transparent bg-gradient-to-r from-blue-900 to-blue-600 drop-shadow-sm">
-                            {" "}VERSE
+                    <h1 className="text-5xl md:text-8xl font-black mb-10 tracking-tight font-mono">
+                        <span className="block md:inline text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]">
+                            console.log("NEURAL_LINK");
                         </span>
                     </h1>
 
-                    {/* Welcome Slogan */}
+                    {/* Welcome Slogan - Unboxed, High Visibility */}
                     <div className="max-w-6xl mx-auto space-y-8">
-                        <p className="text-4xl md:text-6xl font-extrabold leading-tight text-white drop-shadow-md">
-                            Do you love coding and problem solving?
+                        <p className="text-2xl md:text-4xl font-bold leading-tight text-white drop-shadow-lg font-mono filter">
+                            if (user.mind == "connected" && user.code == "optimized") &#123;
                         </p>
 
-                        <p className="text-2xl md:text-3xl text-blue-200 font-medium">
-                            Then what are you waiting for?
+                        <p className="text-xl md:text-2xl text-cyan-200 font-medium font-mono pl-8 drop-shadow-md">
+                            // Ignite your neurons
+                            <br />
+                            // Solve the unsolvable
                         </p>
 
                         <motion.div
@@ -79,10 +81,11 @@ const Home = () => {
                             transition={{ delay: 0.5 }}
                             className="pt-6"
                         >
-                            <span className="text-3xl md:text-4xl font-black text-cyan-300 uppercase tracking-widest drop-shadow-lg filter brightness-125">
-                                Register for INTRA SUST 2026
+                            <span className="text-3xl md:text-4xl font-black text-cyan-400 uppercase tracking-widest drop-shadow-[0_0_10px_rgba(6,182,212,0.8)] font-mono">
+                                initiateSequence();
                                 <div>
                                     <br></br>
+                                    <span className="text-xl opacity-50 text-white">&#125;</span>
                                     <br></br>
                                 </div>
                             </span>

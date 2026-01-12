@@ -11,10 +11,10 @@ import {
     Phone,
     Calendar,
     Shirt,
-    ArrowLeft
+    ArrowLeft,
+    Code
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import ParticleBackground from '../components/ParticleBackground';
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -24,6 +24,7 @@ const Register = () => {
         session: '',
         contactNumber: '',
         tshirtSize: '',
+        cfHandle: '',
     });
 
     const [status, setStatus] = useState({ type: '', message: '' });
@@ -60,19 +61,15 @@ const Register = () => {
         }
     };
 
-    const pageBgColor = "#053c8fff";
-
-    // Reusable Input Group Component
-    // 1.5cm height ≈ 57px
-    // 12cm width ≈ 454px
+    // Unboxed -> Glass Boxed Input Group
     const InputGroup = ({ label, icon: Icon, children }) => (
         <div className="mb-6 last:mb-0 mx-auto" style={{ width: '454px', maxWidth: '100%' }}>
-            <label className="block text-gray-300 text-sm font-bold mb-2 ml-1">{label}</label>
+            <label className="block text-cyan-300 text-sm font-bold mb-2 ml-1 shadow-[0_0_10px_black]">{label}</label>
             <div
-                className="flex items-center border border-white/30 rounded-lg overflow-hidden focus-within:border-neon-green focus-within:ring-1 focus-within:ring-neon-green/50 transition-all duration-300"
-                style={{ height: '57px', backgroundColor: '#02021bff' }}
+                className="flex items-center bg-cyan-900/10 backdrop-blur-md border border-cyan-500/30 rounded-xl overflow-hidden focus-within:border-cyan-400 focus-within:bg-cyan-900/20 focus-within:shadow-[0_0_15px_rgba(34,211,238,0.1)] transition-all duration-300"
+                style={{ height: '57px' }}
             >
-                <div className="h-full w-14 border-r border-white/10 text-cyan-300 flex items-center justify-center">
+                <div className="h-full w-14 text-cyan-400 flex items-center justify-center border-r border-cyan-500/10">
                     <Icon size={24} />
                 </div>
                 <div className="flex-1 h-full flex items-center">
@@ -84,20 +81,18 @@ const Register = () => {
 
     if (status.type === 'success') {
         return (
-            <div className="min-h-screen relative flex items-center justify-center py-20 px-4" style={{ backgroundColor: pageBgColor }}>
-                <ParticleBackground />
+            <div className="min-h-screen flex items-center justify-center py-20 px-4 font-mono relative">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="w-full max-w-lg p-10 rounded-2xl text-center relative z-10"
-                    style={{ backgroundColor: '#02021bff', border: '1px solid rgba(255,255,255,0.2)' }}
+                    className="w-full max-w-lg p-10 text-center relative z-10"
                 >
-                    <CheckCircle size={80} className="text-neon-green mx-auto mb-6 drop-shadow-lg" />
-                    <h2 className="text-3xl font-bold mb-4 neon-text text-white">Registration Complete!</h2>
-                    <p className="text-gray-200 mb-8 text-lg">Thank you for registering for INTRA SUST.</p>
+                    <CheckCircle size={80} className="text-cyan-400 mx-auto mb-6 drop-shadow-[0_0_15px_rgba(34,211,238,0.5)]" />
+                    <h2 className="text-3xl font-bold mb-4 text-white drop-shadow-md">Registration Complete!</h2>
+                    <p className="text-cyan-100 mb-8 text-lg">Thank you for registering for Intra SUST Programming Contest - 2026.</p>
 
                     <div className="flex flex-col gap-4">
-                        <Link to="/" className="bg-neon-green text-dark-bg font-bold py-3 rounded-lg hover:bg-green-400 transition-colors shadow-lg">
+                        <Link to="/" className="bg-cyan-500/20 border border-cyan-400 text-cyan-300 font-bold py-3 rounded-lg hover:bg-cyan-500/40 transition-all shadow-[0_0_15px_rgba(34,211,238,0.3)]">
                             Go Home
                         </Link>
                         <button
@@ -110,9 +105,10 @@ const Register = () => {
                                     session: '',
                                     contactNumber: '',
                                     tshirtSize: '',
+                                    cfHandle: ''
                                 });
                             }}
-                            className="bg-transparent border border-gray-400 text-gray-200 font-bold py-3 rounded-lg hover:bg-white/10 transition-colors"
+                            className="bg-transparent text-gray-300 font-bold py-3 hover:text-white transition-colors"
                         >
                             Register Another Person
                         </button>
@@ -123,22 +119,18 @@ const Register = () => {
     }
 
     return (
-        <div className="min-h-screen relative flex items-center justify-center py-20 px-4" style={{ backgroundColor: pageBgColor }}>
-            <ParticleBackground />
-
-            <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                // Increased max-width to max-w-6xl to comfortably fit two 454px columns + gap + padding
+        <div className="min-h-screen flex items-center justify-center py-20 px-4 font-mono relative">
+            <div
                 className="w-full max-w-6xl p-8 md:p-12 relative z-10"
             >
-                <Link to="/" className="text-white hover:text-cyan-300 mb-8 inline-flex items-center transition-transform hover:-translate-x-1">
+                <Link to="/" className="text-cyan-400 hover:text-white mb-8 inline-flex items-center transition-transform hover:-translate-x-1">
                     <ArrowLeft size={32} />
                 </Link>
 
-                <h2 className="text-4xl font-bold mb-10 text-center text-white drop-shadow-md tracking-tight">
+                <h2 className="text-4xl font-bold mb-2 text-center text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] tracking-tight">
                     Registration Form
                 </h2>
+                <p className="text-center text-cyan-500/80 mb-10 font-bold">Intra SUST Programming Contest - 2026</p>
 
                 {status.message && (
                     <motion.div
@@ -222,6 +214,18 @@ const Register = () => {
                                 />
                             </InputGroup>
 
+                            <InputGroup label="Codeforces Handle" icon={Code}>
+                                <input
+                                    type="text"
+                                    name="cfHandle"
+                                    value={formData.cfHandle}
+                                    onChange={handleChange}
+                                    // Not strictly required maybe? Let's make it optional or required as per "fill up" implies required. User said "another option to fill up". Let's assume required for a programming contest.
+                                    className="w-full h-full bg-transparent border-none px-4 text-lg text-white placeholder-gray-500 focus:outline-none focus:ring-0"
+                                    placeholder="tourist"
+                                />
+                            </InputGroup>
+
                             <InputGroup label="T-shirt Size" icon={Shirt}>
                                 <select
                                     name="tshirtSize"
@@ -259,7 +263,7 @@ const Register = () => {
                         </button>
                     </div>
                 </form>
-            </motion.div>
+            </div>
         </div>
     );
 };
