@@ -165,6 +165,7 @@ const Register = () => {
                                     required
                                     className="w-full h-full bg-transparent border-none px-4 text-lg text-white placeholder-gray-500 focus:outline-none focus:ring-0"
                                     placeholder="Enter your name"
+                                    style={{ color: 'white' }}
                                 />
                             </InputGroup>
 
@@ -177,6 +178,7 @@ const Register = () => {
                                     required
                                     className="w-full h-full bg-transparent border-none px-4 text-lg text-white placeholder-gray-500 focus:outline-none focus:ring-0"
                                     placeholder="CSE"
+                                    style={{ color: 'white' }}
                                 />
                             </InputGroup>
 
@@ -229,6 +231,7 @@ const Register = () => {
                                     required
                                     className="w-full h-full bg-transparent border-none px-4 text-lg text-white placeholder-gray-500 focus:outline-none focus:ring-0"
                                     placeholder="2020331000"
+                                    style={{ color: 'white' }}
                                 />
                             </InputGroup>
 
@@ -241,6 +244,7 @@ const Register = () => {
                                     required
                                     className="w-full h-full bg-transparent border-none px-4 text-lg text-white placeholder-gray-500 focus:outline-none focus:ring-0"
                                     placeholder="01712345678"
+                                    style={{ color: 'white' }}
                                 />
                             </InputGroup>
 
@@ -253,6 +257,7 @@ const Register = () => {
                                     // Not strictly required maybe? Let's make it optional or required as per "fill up" implies required. User said "another option to fill up". Let's assume required for a programming contest.
                                     className="w-full h-full bg-transparent border-none px-4 text-lg text-white placeholder-gray-500 focus:outline-none focus:ring-0"
                                     placeholder="tourist"
+                                    style={{ color: 'white' }}
                                 />
                             </InputGroup>
 
