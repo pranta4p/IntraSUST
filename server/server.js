@@ -25,7 +25,11 @@ console.log('EMAIL:', !!process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL);
 console.log('PRIVATE_KEY:', !!process.env.GOOGLE_PRIVATE_KEY);
 console.log('-----------------');
 
-// Start server
-app.listen(PORT, () => {
-    console.log(`✅ Server running on port ${PORT}`);
-});
+// Start server only if not running in Vercel (Vercel handles this automatically)
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        console.log(`✅ Server running on port ${PORT}`);
+    });
+}
+
+module.exports = app;

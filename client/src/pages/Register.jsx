@@ -74,7 +74,7 @@ const Register = () => {
         }
 
         try {
-            const res = await axios.post('http://localhost:5000/api/register', formData);
+            const res = await axios.post('/api/register', formData);
             setStatus({ type: 'success', message: res.data.message });
         } catch (err) {
             setStatus({
@@ -141,176 +141,163 @@ const Register = () => {
                 </h2>
                 <p className="text-center text-cyan-500/80 mb-10 font-bold">Intra SUST Programming Contest - 2026</p>
 
-                <div className="flex flex-col items-center justify-center space-y-6 mt-10 p-8 bg-cyan-900/10 backdrop-blur-md border border-cyan-500/30 rounded-xl">
-                    <p className="text-2xl text-cyan-300 font-bold text-center">
-                        to register please fill up this form
-                    </p>
-                    <a
-                        href="https://docs.google.com/forms/d/e/1FAIpQLScFu8tSBlCk4IWIBQlBhr31Eb8J5I4dgOvZY4hmkhkyBzmaDw/viewform?usp=publish-editor"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-3 px-8 py-4 bg-white text-[#02021b] rounded-lg font-bold text-lg hover:bg-cyan-50 transition-all hover:scale-105 shadow-[0_0_20px_rgba(34,211,238,0.3)]"
+                {status.message && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className={`p-4 mb-8 rounded-lg flex items-center gap-3 shadow-lg border ${status.type === 'success' ? 'bg-green-500/20 border-green-500/50 text-green-200' : 'bg-red-500/20 border-red-500/50 text-red-200'}`}
                     >
-                        Click Here to Register <Send size={20} />
-                    </a>
-                </div>
-
-                {false && (
-                    <>
-                        {status.message && (
-                            <motion.div
-                                initial={{ opacity: 0, y: -10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                className={`p-4 mb-8 rounded-lg flex items-center gap-3 shadow-lg border ${status.type === 'success' ? 'bg-green-500/20 border-green-500/50 text-green-200' : 'bg-red-500/20 border-red-500/50 text-red-200'}`}
-                            >
-                                {status.type === 'success' ? <CheckCircle size={24} /> : <AlertCircle size={24} />}
-                                <span className="font-medium">{status.message}</span>
-                            </motion.div>
-                        )}
-
-                        <form onSubmit={handleSubmit} className="space-y-2">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-8">
-                                {/* Left Column */}
-                                <div className="space-y-4">
-                                    <InputGroup label="Full Name" icon={User}>
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            value={formData.name}
-                                            onChange={handleChange}
-                                            required
-                                            className="w-full h-full bg-transparent border-none px-4 text-lg text-white placeholder-gray-500 focus:outline-none focus:ring-0"
-                                            placeholder="Enter your name"
-                                        />
-                                    </InputGroup>
-
-                                    <InputGroup label="Department" icon={Building2}>
-                                        <input
-                                            type="text"
-                                            name="department"
-                                            value={formData.department}
-                                            onChange={handleChange}
-                                            required
-                                            className="w-full h-full bg-transparent border-none px-4 text-lg text-white placeholder-gray-500 focus:outline-none focus:ring-0"
-                                            placeholder="CSE"
-                                        />
-                                    </InputGroup>
-
-                                    <InputGroup label="Session" icon={Calendar}>
-                                        <select
-                                            name="session"
-                                            value={formData.session}
-                                            onChange={handleChange}
-                                            required
-                                            className="w-full h-full bg-transparent border-none px-4 text-lg text-white focus:outline-none focus:ring-0 appearance-none cursor-pointer [&>option]:bg-gray-900"
-                                            style={{ color: 'white' }}
-                                        >
-                                            <option value="" disabled style={{ color: 'white', backgroundColor: '#02021b' }}>Select Session</option>
-                                            {sessions.map((s) => (
-                                                <option key={s} value={s} style={{ color: 'white', backgroundColor: '#02021b' }}>{s}</option>
-                                            ))}
-                                        </select>
-                                    </InputGroup>
-
-                                    <InputGroup
-                                        label="Can you bring a laptop if needed?"
-                                        icon={Laptop}
-                                        note="* We will verify and arrange devices for those who cannot."
-                                    >
-                                        <div className="flex flex-col w-full h-full justify-center">
-                                            <select
-                                                name="canBringLaptop"
-                                                value={formData.canBringLaptop}
-                                                onChange={handleChange}
-                                                required
-                                                className="w-full bg-transparent border-none px-4 text-lg text-white focus:outline-none focus:ring-0 appearance-none cursor-pointer [&>option]:bg-gray-900"
-                                                style={{ color: 'white' }}
-                                            >
-                                                <option value="" disabled style={{ color: 'white', backgroundColor: '#02021b' }}>Select Option</option>
-                                                <option value="Yes" style={{ color: 'white', backgroundColor: '#02021b' }}>Yes</option>
-                                                <option value="No" style={{ color: 'white', backgroundColor: '#02021b' }}>No</option>
-                                            </select>
-                                        </div>
-                                    </InputGroup>
-                                </div>
-
-                                {/* Right Column */}
-                                <div className="space-y-4">
-                                    <InputGroup label="Registration Number" icon={Hash}>
-                                        <input
-                                            type="text"
-                                            name="registrationNumber"
-                                            value={formData.registrationNumber}
-                                            onChange={handleChange}
-                                            required
-                                            className="w-full h-full bg-transparent border-none px-4 text-lg text-white placeholder-gray-500 focus:outline-none focus:ring-0"
-                                            placeholder="2020331000"
-                                        />
-                                    </InputGroup>
-
-                                    <InputGroup label="Contact Number" icon={Phone}>
-                                        <input
-                                            type="text"
-                                            name="contactNumber"
-                                            value={formData.contactNumber}
-                                            onChange={handleChange}
-                                            required
-                                            className="w-full h-full bg-transparent border-none px-4 text-lg text-white placeholder-gray-500 focus:outline-none focus:ring-0"
-                                            placeholder="01712345678"
-                                        />
-                                    </InputGroup>
-
-                                    <InputGroup label="Codeforces Handle" icon={Code}>
-                                        <input
-                                            type="text"
-                                            name="cfHandle"
-                                            value={formData.cfHandle}
-                                            onChange={handleChange}
-                                            // Not strictly required maybe? Let's make it optional or required as per "fill up" implies required. User said "another option to fill up". Let's assume required for a programming contest.
-                                            className="w-full h-full bg-transparent border-none px-4 text-lg text-white placeholder-gray-500 focus:outline-none focus:ring-0"
-                                            placeholder="tourist"
-                                        />
-                                    </InputGroup>
-
-                                    <InputGroup label="T-shirt Size" icon={Shirt}>
-                                        <select
-                                            name="tshirtSize"
-                                            value={formData.tshirtSize}
-                                            onChange={handleChange}
-                                            required
-                                            className="w-full h-full bg-transparent border-none px-4 text-lg text-white focus:outline-none focus:ring-0 appearance-none cursor-pointer [&>option]:bg-[#02021b]"
-                                            style={{ color: 'white' }}
-                                        >
-                                            <option value="" style={{ color: 'white', backgroundColor: '#02021b' }}>Select Size</option>
-                                            {sizes.map((s) => (
-                                                <option key={s} value={s} style={{ color: 'white', backgroundColor: '#02021b' }}>{s}</option>
-                                            ))}
-                                        </select>
-                                    </InputGroup>
-                                </div>
-                            </div>
-                            <div>
-                                <br></br>
-                                <br></br>
-                            </div>
-                            <div className="pt-8 flex justify-center">
-                                <button
-                                    type="submit"
-                                    disabled={loading}
-                                    style={{
-                                        width: '454px',
-                                        height: '57px',
-                                        backgroundColor: '#ffffff',
-                                        border: '1px solid rgba(255,255,255,0.3)'
-                                    }}
-                                    className="rounded-lg text-[#02021b] font-bold hover:bg-gray-200 hover:scale-[1.02] transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed shadow-xl text-lg"
-                                >
-                                    {loading ? 'Registering...' : <><Send size={22} /> SUBMIT</>}
-                                </button>
-                            </div>
-                        </form>
-                    </>
+                        {status.type === 'success' ? <CheckCircle size={24} /> : <AlertCircle size={24} />}
+                        <span className="font-medium">{status.message}</span>
+                    </motion.div>
                 )}
+
+                <form onSubmit={handleSubmit} className="space-y-2">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-8">
+                        {/* Left Column */}
+                        <div className="space-y-4">
+                            <InputGroup label="Full Name" icon={User}>
+                                <input
+                                    type="text"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    required
+                                    className="w-full h-full bg-transparent border-none px-4 text-lg text-white placeholder-gray-500 focus:outline-none focus:ring-0"
+                                    placeholder="Enter your name"
+                                    style={{ color: 'white' }}
+                                />
+                            </InputGroup>
+
+                            <InputGroup label="Department" icon={Building2}>
+                                <input
+                                    type="text"
+                                    name="department"
+                                    value={formData.department}
+                                    onChange={handleChange}
+                                    required
+                                    className="w-full h-full bg-transparent border-none px-4 text-lg text-white placeholder-gray-500 focus:outline-none focus:ring-0"
+                                    placeholder="CSE"
+                                    style={{ color: 'white' }}
+                                />
+                            </InputGroup>
+
+                            <InputGroup label="Session" icon={Calendar}>
+                                <select
+                                    name="session"
+                                    value={formData.session}
+                                    onChange={handleChange}
+                                    required
+                                    className="w-full h-full bg-transparent border-none px-4 text-lg text-white focus:outline-none focus:ring-0 appearance-none cursor-pointer [&>option]:bg-gray-900"
+                                    style={{ color: 'white' }}
+                                >
+                                    <option value="" disabled style={{ color: 'white', backgroundColor: '#02021b' }}>Select Session</option>
+                                    {sessions.map((s) => (
+                                        <option key={s} value={s} style={{ color: 'white', backgroundColor: '#02021b' }}>{s}</option>
+                                    ))}
+                                </select>
+                            </InputGroup>
+
+                            <InputGroup
+                                label="Can you bring a laptop if needed?"
+                                icon={Laptop}
+                                note="* We will verify and arrange devices for those who cannot."
+                            >
+                                <div className="flex flex-col w-full h-full justify-center">
+                                    <select
+                                        name="canBringLaptop"
+                                        value={formData.canBringLaptop}
+                                        onChange={handleChange}
+                                        required
+                                        className="w-full bg-transparent border-none px-4 text-lg text-white focus:outline-none focus:ring-0 appearance-none cursor-pointer [&>option]:bg-gray-900"
+                                        style={{ color: 'white' }}
+                                    >
+                                        <option value="" disabled style={{ color: 'white', backgroundColor: '#02021b' }}>Select Option</option>
+                                        <option value="Yes" style={{ color: 'white', backgroundColor: '#02021b' }}>Yes</option>
+                                        <option value="No" style={{ color: 'white', backgroundColor: '#02021b' }}>No</option>
+                                    </select>
+                                </div>
+                            </InputGroup>
+                        </div>
+
+                        {/* Right Column */}
+                        <div className="space-y-4">
+                            <InputGroup label="Registration Number" icon={Hash}>
+                                <input
+                                    type="text"
+                                    name="registrationNumber"
+                                    value={formData.registrationNumber}
+                                    onChange={handleChange}
+                                    required
+                                    className="w-full h-full bg-transparent border-none px-4 text-lg text-white placeholder-gray-500 focus:outline-none focus:ring-0"
+                                    placeholder="2020331000"
+                                    style={{ color: 'white' }}
+                                />
+                            </InputGroup>
+
+                            <InputGroup label="Contact Number" icon={Phone}>
+                                <input
+                                    type="text"
+                                    name="contactNumber"
+                                    value={formData.contactNumber}
+                                    onChange={handleChange}
+                                    required
+                                    className="w-full h-full bg-transparent border-none px-4 text-lg text-white placeholder-gray-500 focus:outline-none focus:ring-0"
+                                    placeholder="01712345678"
+                                    style={{ color: 'white' }}
+                                />
+                            </InputGroup>
+
+                            <InputGroup label="Codeforces Handle" icon={Code}>
+                                <input
+                                    type="text"
+                                    name="cfHandle"
+                                    value={formData.cfHandle}
+                                    onChange={handleChange}
+                                    // Not strictly required maybe? Let's make it optional or required as per "fill up" implies required. User said "another option to fill up". Let's assume required for a programming contest.
+                                    className="w-full h-full bg-transparent border-none px-4 text-lg text-white placeholder-gray-500 focus:outline-none focus:ring-0"
+                                    placeholder="tourist"
+                                    style={{ color: 'white' }}
+                                />
+                            </InputGroup>
+
+                            <InputGroup label="T-shirt Size" icon={Shirt}>
+                                <select
+                                    name="tshirtSize"
+                                    value={formData.tshirtSize}
+                                    onChange={handleChange}
+                                    required
+                                    className="w-full h-full bg-transparent border-none px-4 text-lg text-white focus:outline-none focus:ring-0 appearance-none cursor-pointer [&>option]:bg-[#02021b]"
+                                    style={{ color: 'white' }}
+                                >
+                                    <option value="" style={{ color: 'white', backgroundColor: '#02021b' }}>Select Size</option>
+                                    {sizes.map((s) => (
+                                        <option key={s} value={s} style={{ color: 'white', backgroundColor: '#02021b' }}>{s}</option>
+                                    ))}
+                                </select>
+                            </InputGroup>
+                        </div>
+                    </div>
+                    <div>
+                        <br></br>
+                        <br></br>
+                    </div>
+                    <div className="pt-8 flex justify-center">
+                        <button
+                            type="submit"
+                            disabled={loading}
+                            style={{
+                                width: '454px',
+                                height: '57px',
+                                backgroundColor: '#ffffff',
+                                border: '1px solid rgba(255,255,255,0.3)'
+                            }}
+                            className="rounded-lg text-[#02021b] font-bold hover:bg-gray-200 hover:scale-[1.02] transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed shadow-xl text-lg"
+                        >
+                            {loading ? 'Registering...' : <><Send size={22} /> SUBMIT</>}
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     );
