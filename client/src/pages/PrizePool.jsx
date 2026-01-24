@@ -32,21 +32,153 @@ const PrizePool = () => {
                 </motion.div>
 
 
-                {/* Coming Soon Message */}
+
+
+                <motion.div>
+                    <br>
+                    </br>
+                    <br>
+                    </br>
+                    <br>
+                    </br>
+                </motion.div>
+
+                {/* 🏆 PODIUM */}
+                <div className="grid grid-cols-3 gap-x-28 justify-items-center mb-16">
+
+                    {/* 🥈 2nd */}
+                    <motion.div
+                        className="flex flex-col items-center text-center"
+                        initial={{ opacity: 0, y: 16 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.25 }}
+                    >
+                        <Award size={56} className="text-cyan-400 mb-3" />
+                        <p className="text-lg font-semibold text-cyan-300">
+                            2nd Place
+                        </p>
+                        <p className="text-xl font-bold text-cyan-400">
+                            ৳6000
+                        </p>
+                    </motion.div>
+
+                    {/* 🥇 1st */}
+                    <motion.div
+                        className="flex flex-col items-center text-center"
+                        initial={{ opacity: 0, scale: 0.96 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.1 }}
+                    >
+                        <Trophy
+                            size={80}
+                            className="text-yellow-400 mb-3"
+                        />
+                        <p className="text-xl font-bold text-yellow-300">
+                            1st Place
+                        </p>
+                        <p className="text-3xl font-extrabold text-yellow-400">
+                            ৳8,000
+                        </p>
+                    </motion.div>
+
+                    {/* 🥉 3rd */}
+                    <motion.div
+                        className="flex flex-col items-center text-center"
+                        initial={{ opacity: 0, y: 16 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.4 }}
+                    >
+                        <Award size={56} className="text-cyan-400 mb-3" />
+                        <p className="text-lg font-semibold text-cyan-300">
+                            3rd Place
+                        </p>
+                        <p className="text-xl font-bold text-cyan-400">
+                            ৳3000
+                        </p>
+                    </motion.div>
+                </div>
+
+                <motion.div>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                </motion.div>
+
+
+                {/* 🏅 4th & 5th */}
                 <motion.div
-                    className="text-center py-32"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.2 }}
+                    className="flex flex-col items-center gap-4 mb-16"
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6 }}
                 >
-                    <Trophy size={120} className="mx-auto text-cyan-400 mb-8" style={{ filter: 'drop-shadow(0 0 20px rgba(34,211,238,0.5))' }} />
-                    <h2 className="text-6xl font-bold text-white mb-4" style={{ textShadow: '0 0 20px rgba(255,255,255,0.3)' }}>
-                        Coming Soon!
-                    </h2>
-                    <p className="text-xl text-cyan-400 font-semibold">
-                        Prize pool details will be announced shortly
+                    {[
+                        { place: 4, amount: "2000" },
+                        { place: 5, amount: "1500" },
+                        { place: 6, amount: "1000" },
+                        { place: 7, amount: "1000" },
+                        { place: 8, amount: "1000" },
+                        { place: 9, amount: "1000" },
+                        { place: 10, amount: "1000" },
+                    ].map((prize) => (
+                        <div
+                            key={prize.place}
+                            className="w-[750px] max-w-full px-6 py-4 flex items-center justify-between
+                        border border-cyan-500/30 rounded-lg"
+                        >
+                            <div className="flex items-center gap-3">
+                                <Medal size={22} className="text-cyan-400" />
+                                <h4 className="text-lg font-semibold text-cyan-300">
+                                    {prize.place}th Place
+                                </h4>
+                            </div>
+
+                            <p className="text-xl font-bold text-cyan-400">
+                                ৳{prize.amount}
+                            </p>
+                        </div>
+                    ))}
+
+                    <div
+                        className="w-[750px] max-w-full px-6 py-4 flex items-center justify-between
+                        border border-cyan-500/30 rounded-lg"
+                    >
+                        <div className="flex items-center gap-3">
+                            <Medal size={22} className="text-cyan-400" />
+                            <h4 className="text-lg font-semibold text-cyan-300">
+                                Top Female Coder (outside top 10)
+                            </h4>
+                        </div>
+                        <p className="text-xl font-bold text-cyan-400">
+                            ৳1000
+                        </p>
+                    </div>
+                </motion.div>
+
+
+
+                <motion.div>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                </motion.div>
+
+                {/* 🎁 Info */}
+                <motion.div
+                    className="text-center p-5 max-w-lg mx-auto"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.75 }}
+                >
+                    <Gift size={32} className="mx-auto text-purple-400 mb-4" />
+                    <h3 className="text-lg font-bold text-cyan-300 mb-2">
+                        Final Round Perks
+                    </h3>
+                    <p className="text-base text-gray-300">
+                        Every finalist receives an exclusive event T-shirt, snacks and other exciting gifts.
                     </p>
                 </motion.div>
+
 
 
                 <motion.div>
