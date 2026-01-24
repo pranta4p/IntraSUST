@@ -5,6 +5,8 @@ import { Star, ArrowLeft, MapPin, Phone, Mail, Globe, Facebook } from 'lucide-re
 
 import cpsLogo from '../assets/sponsors/cps_academy_logo.png';
 import oneIeltsLogo from '../assets/sponsors/one_ielts_logo.png';
+import authLabLogo from '../assets/sponsors/authlab.png';
+import technextLogo from '../assets/sponsors/technext.png';
 
 const Sponsors = () => {
     const sponsors = [
@@ -30,6 +32,7 @@ const Sponsors = () => {
         },
         {
             name: "AuthLab",
+            image: authLabLogo,
             intro: "AuthLab is a global technology firm aiming to decimate the line between your business idea and it’s actualization.",
             address: "24/A, Shah Farid Rd, Jalalabad R/A, Sylhet, Bangladesh",
             phone: "01979-791001",
@@ -39,6 +42,7 @@ const Sponsors = () => {
         },
         {
             name: "Technext Limited",
+            image: technextLogo,
             intro: "Technext Limited, the parent company of MailBluster, ThemeWagon and Graduate Network. Technext develops excellent products with top-notch customer service. For achieving that excellence, they’ve committed and engaged people in their team.",
             address: "14th floor, Rupayan Shelford, 23/6 Mirpur Rd, Shyamoli, Dhaka, Bangladesh",
             phone: "+1 302 433 6002",
