@@ -34,7 +34,7 @@ const Schedule = () => {
                     <EventCard
                         title="2nd Preliminary Contest"
                         date="25 January 2026"
-                        time="6:00 PM - 9:00 PM"
+                        time="2:00 PM - 5:00 PM"
                         delay={0.3}
                     />
 
