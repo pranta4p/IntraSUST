@@ -3,10 +3,14 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Star, ArrowLeft, MapPin, Phone, Mail, Globe, Facebook } from 'lucide-react';
 
+import cpsLogo from '../assets/sponsors/cps_academy_logo.png';
+import oneIeltsLogo from '../assets/sponsors/one_ielts_logo.png';
+
 const Sponsors = () => {
     const sponsors = [
         {
             name: "CPS Academy",
+            image: cpsLogo,
             intro: "Choose your path to success. Master competitive programming or land your dream job at top tech companies.",
             address: "A block, Road 3, Chandgaon Residential Area, Chittagong, Bangladesh",
             phone: "01759-261490",
@@ -16,6 +20,7 @@ const Sponsors = () => {
         },
         {
             name: "One IELTS",
+            image: oneIeltsLogo,
             intro: "Free IELTS Computer Based Mock Tests — Practice Online",
             address: "Jail Road, Sylhet, Bangladesh",
             phone: "01345-236404",
@@ -69,7 +74,20 @@ const Sponsors = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.1 }}
                             className="bg-gray-900/50 backdrop-blur-sm border border-cyan-500/20 p-8 rounded-xl hover:border-cyan-500/50 transition-colors group text-center"
-                        >
+                        >'
+                            {
+                                <br></br>
+                            }
+                            {sponsor.image && (
+                                <div className="mb-6 mt-4 flex justify-center">
+                                    <img
+                                        src={sponsor.image}
+                                        alt={`${sponsor.name} logo`}
+                                        className="w-auto object-contain hover:scale-105 transition-transform duration-300"
+                                        style={{ height: '55px' }}
+                                    />
+                                </div>
+                            )}
                             <h2 className="text-3xl font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors">{sponsor.name}</h2>
                             <p className="text-gray-300 mb-6 leading-relaxed">{sponsor.intro}</p>
 
@@ -109,15 +127,15 @@ const Sponsors = () => {
                                 </a>
                             </div>
                             {
-                    <br></br>
-                    /* <p className="text-gray-400 text-lg">Interested in sponsoring?</p>
-                    <a href="mailto:ismailfaiyaz111@gmail.com" className="text-cyan-400 font-bold hover:text-white text-lg transition-colors">Contact Us</a> */
-                    }
-                    {
-                    <br></br>
-                    /* <p className="text-gray-400 text-lg">Interested in sponsoring?</p>
-                    <a href="mailto:ismailfaiyaz111@gmail.com" className="text-cyan-400 font-bold hover:text-white text-lg transition-colors">Contact Us</a> */
-                    }
+                                <br></br>
+                                /* <p className="text-gray-400 text-lg">Interested in sponsoring?</p>
+                                <a href="mailto:ismailfaiyaz111@gmail.com" className="text-cyan-400 font-bold hover:text-white text-lg transition-colors">Contact Us</a> */
+                            }
+                            {
+                                <br></br>
+                                /* <p className="text-gray-400 text-lg">Interested in sponsoring?</p>
+                                <a href="mailto:ismailfaiyaz111@gmail.com" className="text-cyan-400 font-bold hover:text-white text-lg transition-colors">Contact Us</a> */
+                            }
                         </motion.div>
                     ))}
                 </div>
@@ -129,19 +147,19 @@ const Sponsors = () => {
                     className="mt-20 text-center"
                 >
                     {
-                    <br></br>
-                    /* <p className="text-gray-400 text-lg">Interested in sponsoring?</p>
-                    <a href="mailto:ismailfaiyaz111@gmail.com" className="text-cyan-400 font-bold hover:text-white text-lg transition-colors">Contact Us</a> */
+                        <br></br>
+                        /* <p className="text-gray-400 text-lg">Interested in sponsoring?</p>
+                        <a href="mailto:ismailfaiyaz111@gmail.com" className="text-cyan-400 font-bold hover:text-white text-lg transition-colors">Contact Us</a> */
                     }
                     {
-                    <br></br>
-                    /* <p className="text-gray-400 text-lg">Interested in sponsoring?</p>
-                    <a href="mailto:ismailfaiyaz111@gmail.com" className="text-cyan-400 font-bold hover:text-white text-lg transition-colors">Contact Us</a> */
+                        <br></br>
+                        /* <p className="text-gray-400 text-lg">Interested in sponsoring?</p>
+                        <a href="mailto:ismailfaiyaz111@gmail.com" className="text-cyan-400 font-bold hover:text-white text-lg transition-colors">Contact Us</a> */
                     }
                     {
-                    <br></br>
-                    /* <p className="text-gray-400 text-lg">Interested in sponsoring?</p>
-                    <a href="mailto:ismailfaiyaz111@gmail.com" className="text-cyan-400 font-bold hover:text-white text-lg transition-colors">Contact Us</a> */
+                        <br></br>
+                        /* <p className="text-gray-400 text-lg">Interested in sponsoring?</p>
+                        <a href="mailto:ismailfaiyaz111@gmail.com" className="text-cyan-400 font-bold hover:text-white text-lg transition-colors">Contact Us</a> */
                     }
                 </motion.div>
             </div>
